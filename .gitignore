@@ -1,5 +1,3 @@
-data/ground-truth/*
-!data/ground-truth/.gitkeep
 data/all-*
 data/list.*
 data/unicharset
