@@ -9,7 +9,7 @@ TESSDATA =  $(LOCAL)/share/tessdata
 MODEL_NAME = foo
 
 # Name of the model to continue from. Default: '$(START_MODEL)'
-START_MODEL = 
+START_MODEL =
 
 LAST_CHECKPOINT = data/checkpoints/$(MODEL_NAME)_checkpoint
 
@@ -108,7 +108,7 @@ $(ALL_BOXES): $(sort $(patsubst %.tif,%.box,$(wildcard $(GROUND_TRUTH_DIR)/*.tif
 	find $(GROUND_TRUTH_DIR) -name '*.box' -exec cat {} \; > "$@"
 
 $(GROUND_TRUTH_DIR)/%.box: $(GROUND_TRUTH_DIR)/%.tif $(GROUND_TRUTH_DIR)/%.gt.txt
-	python generate_line_box.py -i "$(GROUND_TRUTH_DIR)/$*.tif" -t "$(GROUND_TRUTH_DIR)/$*.gt.txt" > "$@"
+	python3 generate_line_box.py -i "$(GROUND_TRUTH_DIR)/$*.tif" -t "$(GROUND_TRUTH_DIR)/$*.gt.txt" > "$@"
 
 $(ALL_LSTMF): $(sort $(patsubst %.tif,%.lstmf,$(wildcard $(GROUND_TRUTH_DIR)/*.tif)))
 	find $(GROUND_TRUTH_DIR) -name '*.lstmf' -exec echo {} \; | sort -R -o "$@"
